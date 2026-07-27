@@ -17,6 +17,8 @@ class RockPaperScissors():
         return computer_choice
 
     def determine_winner(self, user_choice, computer_choice):
+        """تعیین برنده براساس قوانین بازی"""
+        # ترکیب هایی که در آن کاربر برنده می شود:
         win_combinations = [('Rock', 'Scissors'), ('Paper', 'Rock'), ('Scissors', 'Paper')]
 
         if user_choice == computer_choice:
