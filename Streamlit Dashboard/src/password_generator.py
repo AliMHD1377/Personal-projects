@@ -58,14 +58,3 @@ class RandomPasswordGenerator(PasswordGenerator):
 
     def generate(self):
         return "".join(random.choices(self.characters, k=self.length))
-
-
-if __name__ == "__main__":
-    pin_gen = PinCodeGenerator(5)
-    print(pin_gen.generate())
-
-    random_gen = RandomPasswordGenerator(numbers=True, symbols=True)
-    print(random_gen.generate())
-    
-    mem_gen = MemorablePasswordGenerator(capitalize=True)
-    print(mem_gen.generate())
