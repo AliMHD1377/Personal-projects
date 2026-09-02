@@ -1,30 +1,8 @@
 # به نام خدا
-import random
 import streamlit as st
-
+from monty_hall import play_game, simulation_game
 
 st.image("src/images/monty_hall.webp")
-
-
-def play_game(strategy):
-    initial_choice = random.choice(range(3))
-
-    doors = ["car", "goat", "goat"]
-    random.shuffle(doors)
-
-    for i in range(3):
-        if i != initial_choice and doors[i] == "goat":
-            monty_opens = i
-            break
-
-    if strategy == "switch":
-        for i in range(3):
-            if i != initial_choice and i != monty_opens:
-                final_choice = i
-    else:
-        final_choice = initial_choice
-
-    return doors[final_choice] == "car"
 
 
 # درصد بردِ لحظه‌به‌لحظه (برای نمودار خطی)
@@ -39,7 +17,7 @@ def running_win_rate(strategy, num_games):
 
 
 # ---------- رابط کاربری ----------
-st.title("Monty Hall Simulation")
+st.title(" :zap: Monty Hall Simulation")
 
 num_games = st.number_input(
     "تعداد بازی‌هایی که می‌خواهید شبیه‌سازی کنید را وارد کنید",
@@ -48,13 +26,12 @@ num_games = st.number_input(
     value=100,
 )
 
-stay_rates = running_win_rate("stay", num_games)
-switch_rates = running_win_rate("switch", num_games)
-
 left_col, right_col = st.columns(2)
 
 left_col.subheader("درصد برد بدون تغییر")
-left_col.line_chart(stay_rates)
+left_col.metric("درصد نهایی", f"{simulation_game(num_games, 'stay'):.1f}")
+left_col.line_chart(running_win_rate("stay", num_games))
 
 right_col.subheader("درصد برد با تغییر")
-right_col.line_chart(switch_rates)
+right_col.metric("درصد نهایی", f"{simulation_game(num_games, 'switch'):.1f}")
+right_col.line_chart(running_win_rate("switch", num_games))
