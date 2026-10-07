@@ -1,3 +1,3 @@
-# *In collaboration with AI* 🤖
+# *In collaboration with AI* 🤖 🤝 🙋‍♂️
 
 ## just for fun 🎮
