@@ -1,0 +1,5 @@
+streamlit==1.61.1
+currencies==2020.12.12
+cachetools==7.2.1
+humanize==4.16.0
+requests==2.32.3
